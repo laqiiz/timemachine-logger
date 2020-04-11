@@ -1,7 +1,8 @@
 # timemachinelog
 
 timemachine-loggerはzerologのHookでログレベルを時系列にさかのぼって調整します。
-通常時は指定されたログレベル（INFOなど）で出力しますが、ある一定のログレベル（ERROR）が出力された場合に、TRACE, INFOなどの低レベルのログも時をさかのぼって出力します。
+通常時は指定されたログレベル（INFOなど）で出力しますが、ある一定のログレベル（ERROR）が出力された場合に、
+TRACE, INFOなどの低レベルのログも時をさかのぼって出力します。
 
 必要な場合に遡って出力する、ドライブレコーダのような働きを目指しています。
 
@@ -63,8 +64,8 @@ log.SetPutput(timemachinelog.Logger {
 ContextKeyは context.Contextを引き回すことで省略可能。
 
 ```go
-ctx, tml := timemachinelog.Start(context.Background())
-defer tml.End()
+start, ctx := timemachinelog.Start(context.Background())
+defer start.End()
 
 // 省略可能
 log.Context(ctx).Msg("debug1 log")

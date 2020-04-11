@@ -8,7 +8,7 @@ import (
 
 func main() {
 	log := timemachinelog.Log{
-		MinLevel:     timemachinelog.DebugLevel,
+		MinLevel:     timemachinelog.TraceLevel,
 		NormalLevel:  timemachinelog.InfoLevel,
 		TriggerLevel: timemachinelog.ErrorLevel,
 		ContextKey:   "contextID",
@@ -34,7 +34,7 @@ func main() {
 	log.Warn().Context(ctx).Msg("🚧warn log-1")
 	time.Sleep(1 * time.Second)
 
-	//log.Error().Context(ctx).Msg("🚨error log-1")
-	//time.Sleep(1 * time.Second)
+	log.Error().Context(ctx).Msg("🚨error log-1")
+	time.Sleep(1 * time.Second)
 
 }
